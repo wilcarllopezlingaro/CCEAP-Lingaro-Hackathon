@@ -1,0 +1,33 @@
+{
+  "appName": "genai-adoption-lingarian-citizenapp-fullstack-template",
+  "appType": "multi-container",
+  "version": "1.0.0",
+
+  "validation": {
+    "dockerfile": {
+      "path": "frontend/Dockerfile",
+      "required": true,
+      "description": "Frontend containerization configuration"
+    },
+    "compose": {
+      "path": "podman-compose.yml",
+      "required": true,
+      "description": "Multi-container orchestration configuration"
+    },
+    "packageJson": {
+      "path": "frontend/package.json",
+      "required": true,
+      "description": "Frontend dependencies and scripts"
+    },
+    "viteConfig": {
+      "path": "frontend/vite.config.ts",
+      "required": true,
+      "description": "Vite build configuration with federation support"
+    },
+    "srcDirectory": {
+      "path": "frontend/src",
+      "required": true,
+      "description": "Frontend source code directory"
+    }
+  }
+}

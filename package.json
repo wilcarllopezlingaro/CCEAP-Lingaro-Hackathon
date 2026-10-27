@@ -1,0 +1,54 @@
+{
+  "name": "genai-adoption-lingarian-citizenapp-fullstack-template",
+  "version": "1.0.0",
+  "description": "LingarIAn Full-Stack Template with AI adoption features",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "help": "node scripts/help.js",
+    
+    "podman:up": "PLATFORM=$(uname -m | sed 's/x86_64/linux\\/amd64/; s/arm64/linux\\/arm64/; s/aarch64/linux\\/arm64/') podman compose -f podman-compose.yml up --build",
+    "podman:down": "podman compose -f podman-compose.yml down",
+    
+    "dev:full": "npm run dev:dependencies:up && concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "cd backend && uv run uvicorn app.main:app --reload",
+    "dev:frontend": "cd frontend && npm run dev",
+    
+    "dev:dependencies:up": "podman compose -f podman-compose.dev.yml up -d",
+    "dev:dependencies:down": "podman compose -f podman-compose.dev.yml down",
+    "dev:dependencies:logs": "podman compose -f podman-compose.dev.yml logs -f db",
+    "dev:dependencies:reset": "podman compose -f podman-compose.dev.yml down -v && echo 'Database reset complete - all data removed!'",
+    
+    "install:backend": "cd backend && uv sync --extra dev",
+    "install:frontend": "cd frontend && npm install",
+    
+    "build": "cd frontend && npm run build",
+    "build:check": "npm run build && npm run test:backend",
+    
+    "test": "npm run test:backend && npm run test:frontend",
+    "test:backend": "cd backend && uv run python -m pytest",
+    "test:frontend": "cd frontend && npm run test",
+    "test:coverage": "cd frontend && npm run test:coverage",
+    
+    "lint": "npm run lint:backend && npm run lint:frontend",
+    "lint:backend": "cd backend && uv run ruff check .",
+    "lint:frontend": "cd frontend && npm run lint",
+    "lint:fix": "npm run lint:fix:backend && npm run lint:fix:frontend",
+    "lint:fix:backend": "cd backend && uv run ruff format . && uv run ruff check --fix .",
+    "lint:fix:frontend": "cd frontend && npm run lint:fix",
+    
+    "backend:shell": "cd backend && uv run python",
+    
+    "clean": "rimraf frontend/node_modules frontend/dist backend/.venv && echo 'Cleanup complete!'"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "rimraf": "^5.0.5"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "author": "Lingaro",
+  "license": "MIT"
+}

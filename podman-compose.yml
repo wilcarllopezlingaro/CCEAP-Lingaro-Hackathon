@@ -1,0 +1,118 @@
+x-app-config: &app-config
+  APP_NAME: &app-name "${APP_NAME:-defaultapp}"
+  APP_PORT: &app-port "${APP_PORT:-6600}"
+  BACKEND_PORT: &backend-port "${BACKEND_PORT:-8000}"
+  SHELL_APP_API_URL: &shell-app-api-url "${SHELL_APP_API_URL:-http://localhost:8000}"
+  PLATFORM: &platform "${PLATFORM:-linux/arm64}"
+
+networks:
+  default:
+    name: "${APP_NAME:-defaultapp}_network"
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    image: "docker.io/library/${APP_NAME:-defaultapp}_backend:latest"
+    container_name: "${APP_NAME:-defaultapp}_backend"
+    ports:
+      - "${BACKEND_PORT:-8000}:8000"
+    volumes:
+        # Use named volumes for data persistence - no directory creation needed
+      - backend_data:/app/data
+
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER:-postgres}
+      - POSTGRES_HOST=db
+      - POSTGRES_PORT=5432
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-postgres}
+      - POSTGRES_DB=${POSTGRES_DB:-main_db}
+      - ENVIRONMENT=production
+      - PYTHONUNBUFFERED=1
+      - PYTHONDONTWRITEBYTECODE=1
+      # Enhanced logging configuration
+      - LOG_LEVEL=INFO
+      - APP_NAME=${APP_NAME}
+      - CONTAINER_ROLE=backend
+      - BUILD_ID=${BUILD_ID:-unknown}
+      - VITE_API_URL=${SHELL_APP_API_URL:+${SHELL_APP_API_URL}/${APP_NAME}}
+    depends_on:
+      db:
+        condition: service_healthy
+
+    extra_hosts:
+      - "app1.lingaro.app:127.0.0.1"
+    restart: unless-stopped
+    
+    # Enhanced logging configuration for better podman log capture
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        - PLATFORM=${PLATFORM:-linux/amd64}
+        # For production: {SHELL_APP_API_URL}/{APP_NAME}
+        # For local: http://127.0.0.1:8000 (without app_name)
+        - VITE_SHELL_APP_API_URL=${SHELL_APP_API_URL}
+        # Pass APP_NAME as environment variable for dynamic API routing
+        - VITE_APP_NAME=${APP_NAME}
+    image: "docker.io/library/${APP_NAME:-defaultapp}_frontend:latest"
+    container_name: "${APP_NAME:-defaultapp}_frontend"
+    ports:
+      - "${APP_PORT:-6600}:80"
+    environment:
+      - APP_NAME=${APP_NAME:-defaultapp}
+      - CONTAINER_ROLE=frontend
+      - BUILD_ID=${BUILD_ID:-unknown}
+    depends_on:
+      backend:
+        condition: service_started
+    restart: unless-stopped
+    # Enhanced logging configuration for better podman log capture
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:80"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+  
+  db:
+    image: postgres:15
+    container_name: "${APP_NAME:-defaultapp}_db"
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER:-postgres}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-postgres}
+      - POSTGRES_DB=${POSTGRES_DB:-main_db}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+
+volumes:
+  backend_data:
+    name: "${APP_NAME:-defaultapp}_data"
+  postgres_data:
+    name: "${APP_NAME:-defaultapp}_postgres_data"

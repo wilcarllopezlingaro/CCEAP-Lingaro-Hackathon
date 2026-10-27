@@ -1,0 +1,72 @@
+sections:
+  - title: Change Request {title}
+    instructions:
+      - Use clear, descriptive title that summarizes the change
+      - Format: "CR-{YYYY-MM-DD}-{short-description}"
+      - Example: "CR-2025-11-02-add-user-notification-system"
+    sections:
+      - title: Change Type & Priority
+        instructions:
+          - Select change type: Feature Enhancement, Bug Fix, Performance Improvement, Security Update, Infrastructure Change, Business Rule Change
+          - Indicate priority: Critical, High, Medium, Low
+          - Specify impact level: Breaking Change, Non-Breaking, Internal Only
+
+      - title: Business Justification
+        instructions:
+          - Explain why this change is needed from business perspective
+          - Document the problem or opportunity being addressed
+          - Include expected business value or ROI if applicable
+          - Reference user feedback, market requirements, or compliance needs
+
+      - title: Current State Analysis
+        instructions:
+          - Describe how the system currently works in the affected area
+          - Identify limitations or issues with current implementation
+          - Document any workarounds currently in use
+          - Reference existing architecture components that will be affected
+
+      - title: Proposed Solution
+        instructions:
+          - Describe the high-level solution approach
+          - Outline key changes to user experience, if applicable
+          - Identify major technical components that need modification
+          - Consider alternative approaches and explain why this solution was chosen
+
+  - title: Technical Impact Assessment
+    instructions:
+      - List affected system components (backend services, frontend components, database, external integrations)
+      - Identify required changes to APIs, data models, or business logic
+      - Assess impact on existing features and user workflows
+      - Note any dependencies on external systems or third-party services
+      - Consider scalability and performance implications
+
+  - title: Stakeholder Impact
+    instructions:
+      - Identify affected user groups and their experience changes
+      - Document impact on other teams or systems
+      - Consider training needs for end users or support teams
+      - Assess communication requirements
+
+  - title: Implementation Considerations
+    instructions:
+      - Estimate effort and complexity level
+      - Identify potential risks and mitigation strategies
+      - Consider rollback scenarios and backward compatibility
+      - Note any required infrastructure or environment changes
+      - Document testing strategy requirements
+
+  - title: Acceptance Criteria
+    instructions:
+      - Define clear, measurable criteria for change completion
+      - Include functional requirements (what should work)
+      - Include non-functional requirements (performance, security, usability)
+      - Specify testing requirements and success metrics
+      - Use numbered list format for clarity
+
+  - title: Dependencies and Constraints
+    instructions:
+      - List other change requests or projects this depends on
+      - Identify blocking factors or prerequisites
+      - Note any time constraints or deadlines
+      - Document budget or resource limitations
+      - Consider regulatory or compliance constraints

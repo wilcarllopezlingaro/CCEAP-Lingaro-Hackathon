@@ -1,0 +1,71 @@
+
+sections:
+  - title: Story {title}
+    instructions:
+      - Use the format: "As a [user], I want [goal] so that [benefit]".
+      - Clearly define the user role, desired action, and expected benefit.
+      - Ensure the story is concise and focused on a single functionality or feature.
+
+  - title: Epic/Feature Context
+    instructions:
+      - Identify which larger epic or feature this story belongs to
+      - Reference related stories or dependencies
+      - Note any architectural constraints or requirements
+
+  - title: Technical Requirements
+    instructions:
+      - List specific technical components needed (API endpoints, database changes, UI components)
+      - Reference architecture patterns or existing code that should be followed
+      - Note any performance or security requirements
+
+  - title: Dev Notes
+    instructions:
+      - **CRITICAL**: This section MUST contain ONLY information extracted from architecture documents
+      - **Previous Story Context**: Key learnings and outputs from previous stories that inform this implementation
+      - **Data Models**: Specific schemas, validation rules, relationships [with source references]
+      - **API Specifications**: Endpoint details, request/response formats, auth requirements [with source references]
+      - **Component Specifications**: UI component details, props, state management [with source references]
+      - **File Locations**: Exact paths where new code should be created based on project structure
+      - **Testing Requirements**: Specific test cases or strategies from testing documentation
+      - **Technical Constraints**: Version requirements, performance considerations, security rules
+      - Every technical detail MUST include its source reference: `[Source: architecture/{filename}.md#{section}]`
+      - If information for a category is not found in the architecture docs, explicitly state: "No specific guidance found in architecture docs"
+
+  - title: Tasks / Subtasks
+    instructions:
+      - **Maximum 5 subtasks per story** - If more needed, story should be split into multiple stories
+      - Break down the story into specific backend, frontend, and testing tasks with architecture references
+      - Include database migration tasks if needed
+      - Reference applicable acceptance criteria numbers where relevant (e.g., `Task 1 (AC: 1, 3)`)
+      - Include unit testing as explicit subtasks based on Testing Strategy
+      - Estimate complexity (Simple/Medium/Complex)
+      - Each subtask must reference relevant architecture documentation
+
+  - title: Acceptance Criteria
+    instructions:
+      - List functional acceptance criteria (what the feature should do)
+      - Include technical acceptance criteria (performance, security, compatibility)
+      - Add testing requirements (unit tests, integration tests, e2e tests)
+      - Use a numbered list format for clarity
+      - Ensure criteria are specific, measurable, and testable
+
+  - title: Definition of Done
+    instructions:
+      - Code written and peer reviewed
+      - Unit tests written and passing
+      - Integration tests passing
+      - Documentation updated
+      - Feature tested in staging environment
+
+  - title: Risk Assessment
+    instructions:
+      - Identify potential technical risks or blockers
+      - Note dependencies on external systems or third-party services
+      - Highlight any assumptions that need validation
+
+  - title: Dev Agent Record
+    instructions:
+      - Status: [TODO | IN PROGRESS | DONE]
+      - Completion Notes: (auto-filled by agent with implementation summary)
+      - File List: (auto-updated by agent with all files created/modified/deleted)
+      - Change Log: (auto-filled by agent with key changes made)

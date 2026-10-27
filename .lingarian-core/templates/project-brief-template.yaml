@@ -1,0 +1,57 @@
+sections:
+  - title: Project Overview
+    instructions:
+      - Summarize the product concept in 1-2 clear sentences.
+      - Identify the core problem or challenge the application addresses.
+      - Clearly describe the primary goal and intended impact of the application.
+      - Working name for the project§, if available.
+    sections:
+      - title: Problem statement
+        instructions:
+          - Clearly articulate the problem your project aims to solve.
+          - Include any relevant context or background information.
+          - Highlight the pain points or challenges faced by users.
+          - Explain why solving this problem is important now.
+
+      - title: Proposed solution
+        instructions:
+          - Provide a high-level overview of the proposed solution.
+          - Explain how this solution addresses the identified problem.
+          - Highlight any unique features or approaches that differentiate your solution.
+          - Describe the envisioned user experience and key functionalities.
+
+      - title: Target audience
+        instructions:
+          - Define the primary and secondary user segments for the application.
+          - Include demographic or firmographic details where relevant.
+          - Describe the specific needs, behaviors, and pain points of each user segment.
+          - Explain how the application will deliver value to these users.
+
+  - title: User stories
+    instructions:
+      - List key user stories that capture the main functionalities from a user perspective.
+      - Use the format: "As a [user], I want [goal] so that [benefit]".
+      - Prioritize user stories based on their importance to the core functionality.
+      - Include any edge cases or secondary user stories that may be relevant.
+
+  - title: Goals & Scope
+    instructions:
+      - Clearly state the primary goals of the project.
+      - Specify measurable business objectives.
+      - Define user success metrics and how they will be tracked.
+
+  - title: MVP Scope
+    instructions:
+      - Define core features that must be included in the MVP.
+      - Identify features or capabilities that are out of scope for the MVP.
+      - Which user stories are must have and which are nice to have.
+
+  - title: Visual Style & Branding
+    instructions:
+      - Describe color palette, typography, spacing and layout.
+      - Describe overall visual style (e.g., modern, playful, professional).
+
+  - title: Additional Notes
+    instructions:
+      - Add any other information that might be relevant for the project team.
+

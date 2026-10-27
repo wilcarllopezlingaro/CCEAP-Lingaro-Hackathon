@@ -1,0 +1,8 @@
+.lingarian-core
+.claude
+.clinerules
+.github
+
+*.xml
+
+package-lock.json

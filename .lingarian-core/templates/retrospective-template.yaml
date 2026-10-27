@@ -1,0 +1,33 @@
+sections:
+  - title: Task Retrospective for Story {story_name}
+    instructions:
+      - Fill in story name/number and completion date
+      - Note final status (COMPLETED/HALT) and estimated time spent
+      - Keep responses concise and actionable
+
+  - title: Implementation Issues
+    instructions:
+      - What specific problems did you encounter during implementation?
+      - Which tests failed and why? What were the root causes?
+      - Did linting or build processes cause issues? What errors occurred?
+      - Were there application startup or runtime problems?
+
+  - title: Architecture and Documentation
+    instructions:
+      - Was any critical information missing from the architecture files?
+      - Which patterns or examples would have saved time?
+      - What information was hard to find in the documentation?
+      - Did you need to search for information that should be readily available?
+
+  - title: Process Inefficiencies
+    instructions:
+      - Where did you spend excessive time that could be avoided?
+      - What approaches or solutions didn't work and should be avoided?
+      - Were there dead ends that better documentation could prevent?
+
+  - title: Template Improvements
+    instructions:
+      - What specific additions would improve the architecture documentation?
+      - Which code examples or patterns should be added to guidelines?
+      - What process changes would make future tasks more efficient?
+      - Are there common patterns that need better documentation?

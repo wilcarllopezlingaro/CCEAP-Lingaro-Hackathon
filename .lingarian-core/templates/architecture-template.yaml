@@ -1,0 +1,123 @@
+sections:
+  - title: Application Architecture Overview
+    instructions:
+      - Provide a high-level summary of the application's technical architecture
+      - Describe the core purpose and key capabilities of this specific application
+      - Note how this application fits within the LingarIAn Citizen App framework
+      - Reference the LingarIAn standards this application follows
+
+  - title: Data Models
+    instructions:
+      - Define all database tables/entities for this application
+      - For each model, specify table name, purpose, and key fields
+      - Document relationships between models (one-to-many, many-to-many)
+      - Include field types, constraints, and indexes
+      - Note any special data validation or business rules
+      - Format: "Model Name: purpose | Fields: field1 (type, constraints), field2..."
+    sections:
+      - title: Core Entities
+        instructions:
+          - List primary business entities (e.g., User, Product, Order)
+          - Define complete field structure with types and constraints
+          - Document all relationships and foreign keys
+
+      - title: Supporting Entities
+        instructions:
+          - List secondary or reference data entities
+          - Document lookup tables, configuration tables
+          - Note any junction tables for many-to-many relationships
+
+  - title: API Endpoints
+    instructions:
+      - List all REST API endpoints for this application
+      - Group endpoints by resource/domain
+      - For each endpoint specify HTTP method, path, purpose, and authentication requirements
+      - Include request/response payload structure for complex operations
+      - Note any special authorization rules or rate limiting
+      - Format: "METHOD /path - Purpose | Auth: required/public | Request: {...} | Response: {...}"
+    sections:
+      - title: Public Endpoints
+        instructions:
+          - List endpoints accessible without authentication
+          - Typically limited to health checks, login, registration
+
+      - title: Authenticated Endpoints
+        instructions:
+          - Group by resource domain (e.g., Users, Products, Orders)
+          - Include CRUD operations for each resource
+          - Document query parameters and filtering options
+          - Note required roles or permissions for each endpoint
+
+  - title: Frontend Components & Pages
+    instructions:
+      - Describe main pages and their purpose
+      - List key React components organized by feature area
+      - Note component hierarchy and reusability
+      - Document state management approach for complex features
+      - Include routing structure and navigation flow
+    sections:
+      - title: Page Structure
+        instructions:
+          - List all application pages/routes
+          - Describe purpose and key functionality of each page
+          - Note authentication/authorization requirements per page
+
+      - title: Shared Components
+        instructions:
+          - List reusable components used across multiple pages
+          - Document props and usage patterns
+          - Note any custom hooks or utilities
+
+  - title: Key Design Decisions
+    instructions:
+      - Document important architectural choices specific to this application
+      - Explain rationale for decisions that deviate from or extend standard patterns
+      - Note any trade-offs considered and why specific approach was chosen
+      - Include decisions about data modeling, API design, state management, etc.
+      - Use ADR (Architecture Decision Record) format when appropriate
+      - Format: "Decision: [choice made] | Rationale: [why] | Alternatives Considered: [other options] | Consequences: [impact]"
+
+  - title: Business Logic & Rules
+    instructions:
+      - Document application-specific business rules and validations
+      - Describe workflows and process flows unique to this application
+      - Note any complex calculations or algorithms
+      - Include state machines or status transitions if applicable
+      - Describe authorization rules beyond basic CRUD permissions
+
+  - title: Integration Points
+    instructions:
+      - List integrations with LingarIAn Shell services (SSO, file storage, etc.)
+      - Document any external API integrations or third-party services
+      - Note data synchronization requirements
+      - Include webhook configurations or event subscriptions
+
+  - title: Security Considerations
+    instructions:
+      - Document application-specific security requirements
+      - List sensitive data and how it's protected
+      - Note any custom authentication or authorization logic
+      - Include data access control patterns
+      - Document audit logging requirements
+
+  - title: Performance & Scalability
+    instructions:
+      - Identify performance-critical operations
+      - Document caching strategy for this application
+      - Note any pagination or lazy loading requirements
+      - Include database query optimization needs
+      - Describe expected data volumes and growth projections
+
+  - title: Future Extensibility
+    instructions:
+      - Note planned features or capabilities for future phases
+      - Identify architectural provisions for anticipated growth
+      - Document extension points and plugin opportunities
+      - List technical debt or refactoring considerations
+
+  - title: Architecture Notes
+    instructions:
+      - Add any additional architectural considerations
+      - Document assumptions or constraints
+      - Note dependencies on specific framework versions or libraries
+      - Include migration or deployment considerations
