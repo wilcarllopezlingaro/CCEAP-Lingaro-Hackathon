@@ -1,17 +1,3 @@
-/* Global reset and base styles for Material UI */
-* {
-  box-sizing: border-box;
-}
-
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  font-family: 'Maven Pro', 'Roboto', 'Helvetica', 'Arial', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-#root {
-  height: 100%;
-}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; min-width: 320px; min-height: 100%; font-family: Inter, 'Segoe UI', Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+#root { min-height: 100vh; }
