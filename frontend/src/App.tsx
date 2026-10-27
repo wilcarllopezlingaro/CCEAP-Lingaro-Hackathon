@@ -50,7 +50,7 @@ function App() {
       <main>
         <header className="topbar"><span>Workspace <b>/</b> <strong>{view}</strong></span><span className="demo-badge">◉ DEMO DATA</span></header>
         <div className="page-content">
-          <div className="page-heading"><div><div className="eyebrow">TRUST BEFORE REFRESH</div><h1>{view === 'Overview' ? 'Your data, one step ahead.' : view}</h1><p>Prevent issues before they become incidents.</p></div><button className="secondary" onClick={() => { setWorkloads(initial); setEvents(seedEvents); setDemoRun(current => current + 1); setNotice('Demo reset to the original sample scenario.'); }}>↻ Reset demo</button></div>
+          <div className="page-heading"><div><div className="eyebrow">PREVENT ISSUES. PROTECT INSIGHTS.</div><h1>{view === 'Overview' ? 'Your data, one step ahead.' : view}</h1><p>Prevent issues before they become incidents.</p></div><button className="secondary" onClick={() => { setWorkloads(initial); setEvents(seedEvents); setDemoRun(current => current + 1); setNotice('Demo reset to the original sample scenario.'); }}>↻ Reset demo</button></div>
           <div className="demo-note">Demo workspace · Sample readiness, access, and incident data. Actions simulate recovery; no Power BI refreshes or notifications are sent.</div>
           {notice && <div className="notice" role="status">✓ {notice}<button aria-label="Dismiss notification" onClick={() => setNotice('')}>×</button></div>}
           {(view === 'Overview' || view === 'Workloads') && <>
