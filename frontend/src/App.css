@@ -54,3 +54,10 @@ button:disabled{cursor:not-allowed;opacity:.55}
 .sidebar{width:250px}main{margin-left:250px;width:calc(100% - 250px)}
 @media(max-width:1100px){.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.sidebar{width:220px}main{margin-left:220px;width:calc(100% - 220px)}.refresh-summary{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:700px){.sidebar{width:100%}main{margin-left:0;width:100%}.nav-item{font-size:.8125rem}.table-controls input{width:130px}.refresh-summary{padding:5px 16px 20px}.refresh-controls{padding:0 16px}.refresh-controls label{width:100%}.retry-message{padding:15px 16px 0}.refresh-note{padding:10px 16px 20px}.snapshot-summary small{display:block;margin-left:0}.profile{font-size:.875rem}}
+
+.refresh-monitor{margin-top:26px}
+.refresh-monitor-heading{padding:0 2px 2px}
+.refresh-monitor-heading h2{font-size:1.125rem}
+.refresh-monitor-heading p{font-size:.875rem;margin-top:7px}
+.refresh-job-title{font-size:1.0625rem;font-weight:650;letter-spacing:-.2px;margin:0}
+.refresh-monitor .refresh-panel{margin-top:16px}
